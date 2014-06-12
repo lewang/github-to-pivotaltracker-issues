@@ -1,33 +1,30 @@
 GEM
   remote: https://rubygems.org/
   specs:
-    addressable (2.3.4)
+    addressable (2.3.6)
     builder (3.0.4)
+    columnize (0.8.9)
     crack (0.3.2)
-    faraday (0.8.7)
-      multipart-post (~> 1.1)
-    faraday_middleware (0.9.0)
-      faraday (>= 0.7.4, < 0.9)
+    debugger (1.6.8)
+      columnize (>= 0.3.1)
+      debugger-linecache (~> 1.2.0)
+      debugger-ruby_core_source (~> 1.3.5)
+    debugger-linecache (1.2.0)
+    debugger-ruby_core_source (1.3.5)
+    faraday (0.9.0)
+      multipart-post (>= 1.2, < 3)
     happymapper (0.4.0)
       libxml-ruby (~> 2.0)
-    hashie (2.0.5)
     json (1.7.7)
     libxml-ruby (2.6.0)
     mime-types (1.23)
-    multi_json (1.7.6)
-    multipart-post (1.2.0)
+    multipart-post (2.0.0)
     net-http-spy (0.2.1)
-    netrc (0.7.7)
     nokogiri (1.5.9)
     nokogiri-happymapper (0.5.7)
       nokogiri (~> 1.5)
-    octokit (1.24.0)
-      addressable (~> 2.2)
-      faraday (~> 0.8)
-      faraday_middleware (~> 0.9)
-      hashie (~> 2.0)
-      multi_json (~> 1.3)
-      netrc (~> 0.7.7)
+    octokit (3.1.0)
+      sawyer (~> 0.5.3)
     pivotal-tracker (0.5.10)
       builder
       builder
@@ -40,12 +37,16 @@ GEM
       rest-client (~> 1.6.0)
     rest-client (1.6.7)
       mime-types (>= 1.16)
+    sawyer (0.5.4)
+      addressable (~> 2.3.5)
+      faraday (~> 0.8, < 0.10)
 
 PLATFORMS
   ruby
 
 DEPENDENCIES
+  debugger (~> 1.6.8)
   json (~> 1.7.7)
   net-http-spy
-  octokit (~> 1.24.0)
+  octokit
   pivotal-tracker
