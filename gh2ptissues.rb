@@ -8,12 +8,13 @@ PIVOTAL_PROJECT_USE_SSL = true
 
 GITHUB_TOKEN = ENV['GITHUB_TOKEN']
 PIVOTAL_TOKEN = ENV['PIVOTAL_TOKEN'].to_s unless ENV['PIVOTAL_TOKEN'].nil?
+GITHUB_TAG = 'Pivotal 3'
 
 require 'rubygems'
 require 'octokit'
 require 'pivotal-tracker'
 require 'json'
-require 'debugger'
+require 'byebug'
 require 'csv'
 require 'rest_client'
 
@@ -42,6 +43,7 @@ def fix_up_epics(rows)
     elsif epic_hash[epic]
       row["epic"] = epic_hash[epic]
     else
+      debugger
       raise "can't find epic: #{epic}"
     end
     row
@@ -51,7 +53,7 @@ end
 
 def github_issues_to_arr
 
-  issues_filter = 'pivotal' # update filter as appropriate
+  issues_filter = GITHUB_TAG # update filter as appropriate
   total_issues = 0
 
   page_issues = 1
@@ -169,18 +171,20 @@ PivotalTracker::Client.use_ssl = PIVOTAL_PROJECT_USE_SSL
 
 @pivotal_project = PivotalTracker::Project.find(PIVOTAL_PROJECT_ID)
 
+file = "pivotal-#{GITHUB_TAG}.csv"
+
 ###########################
 ## export issues to csv: ##
 ###########################
 
-# github_issues_to_csv("blah_test.csv")
+# github_issues_to_csv(file)
 
 ###################
 ## import issues ##
 ###################
 
 begin
-  issues = fix_up_epics(get_csv_arr("edited.csv"))
+  issues = fix_up_epics(get_csv_arr(file))
   pivotal_import_stories(issues)
 rescue Exception => e
   puts e.backtrace
