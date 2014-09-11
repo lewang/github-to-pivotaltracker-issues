@@ -283,7 +283,7 @@ class ImporterThor < Thor
   def pivotal_import(csv_file)
     args = {}
     importer = GhImporter.new(options)
-    issues = importer.fix_up_epics(importer.get_csv_arr(file))
+    issues = importer.fix_up_epics(importer.get_csv_arr(csv_file))
     importer.pivotal_import_stories(issues)
   end
 
