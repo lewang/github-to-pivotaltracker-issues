@@ -190,6 +190,7 @@ class GhImporter
           # end
 
           @github.add_comment(@github_repo, issue["id"], "Migrated to pivotal tracker #{story.url}")
+          @github.close_issue(@github_repo, issue["id"])
 
           ### LE: Don't close issue
 
