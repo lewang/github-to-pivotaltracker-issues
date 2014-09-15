@@ -144,7 +144,7 @@ class GhImporter
 
     begin
 
-      story_type = 'feature' # 'bug', 'feature', 'chore', 'release'. Omitting makes it a feature.
+      story_type = 'bug' # 'bug', 'feature', 'chore', 'release'. Omitting makes it a feature.
 
       story_current_state = 'unscheduled' # 'unscheduled', 'started', 'accepted', 'delivered', 'finished', 'unscheduled'.
       # 'unstarted' puts it in 'Current' if Commit Mode is on; 'Backlog' if Auto Mode is on.
